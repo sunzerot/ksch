@@ -21,7 +21,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # 호스트의 JAR 파일을 컨테이너로 복사
-COPY /Users/somvley/.jenkins/workspace/ksch/target/ksch-0.0.1-SNAPSHOT.jar /app
+COPY target/*.jar /app
 
 # 어플리케이션 실행
 CMD ["java", "-jar", "ksch-0.0.1-SNAPSHOT.jar"]
