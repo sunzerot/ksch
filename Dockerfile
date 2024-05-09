@@ -1,15 +1,27 @@
-FROM adoptopenjdk/openjdk11
-
-
+#FROM adoptopenjdk/openjdk11
+#
+#
+##VOLUME /tmp
+#
+##ARG JAR_FILE=/Users/somvley/.jenkins/workspace/ksch/target/ksch-0.0.1-SNAPSHOT.jar
 #VOLUME /tmp
+#
+#COPY /Users/somvley/.jenkins/workspace/ksch/target/ksch-0.0.1-SNAPSHOT.jar app.jar
+#
+##EXPOSE 8080
+#
+#ENTRYPOINT ["java","-jar","/app.jar"]
+#
+##CMD ["java", "-jar", "your-application.jar"]
 
-ARG JAR_FILE=/Users/somvley/.jenkins/workspace/ksch/target/ksch-0.0.1-SNAPSHOT.jar
-VOLUME /tmp
 
-COPY ${JAR_FILE} app.jar
+FROM openjdk:11-jre-slim
 
-#EXPOSE 8080
+# 작업 디렉토리 설정
+WORKDIR /app
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+# 호스트의 JAR 파일을 컨테이너로 복사
+COPY /Users/somvley/.jenkins/workspace/ksch/target/ksch-0.0.1-SNAPSHOT.jar /app
 
-#CMD ["java", "-jar", "your-application.jar"]
+# 어플리케이션 실행
+CMD ["java", "-jar", "ksch-0.0.1-SNAPSHOT.jar"]
