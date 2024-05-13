@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class testController {
     @GetMapping("/hello")
     public String test() throws Exception {
-        return "젠킨스 테스트!!";
+        return "젠킨스 테스트!!!!!!";
     }
 }
